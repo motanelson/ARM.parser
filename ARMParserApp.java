@@ -2,24 +2,36 @@
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class ARMParserApp {
+    static String source="";
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o código ARM (ou pressione Enter para sair):");
-
-        while (true) {
-            System.out.print("> ");
-            String input = scanner.nextLine();
-
-            if (input.trim().isEmpty()) {
-                System.out.println("Encerrando o programa.");
-                break;
+      try {
+            source="";
+            File myObj = new File("my.s");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                source=source+data+"\n";
             }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
 
+
+        
+        
+        
+           
+            
             try {
                 // Cria um CharStream a partir da entrada do usuário
-                CharStream charStream = CharStreams.fromString(input);
+                CharStream charStream = CharStreams.fromString(source);
 
                 // Inicializa o lexer e o parser com o CharStream
                 ARMLexer lexer = new ARMLexer(charStream);
@@ -37,6 +49,5 @@ public class ARMParserApp {
             }
         }
         
-        scanner.close();
-    }
+         
 }

@@ -92,6 +92,7 @@ public class ARMParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
+
 	public static class ProgramContext extends ParserRuleContext {
 		public TerminalNode EOF() { return getToken(ARMParser.EOF, 0); }
 		public List<InstructionContext> instruction() {
