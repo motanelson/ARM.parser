@@ -1,0 +1,8 @@
+def funca
+a=10
+b="xxxx"
+end def
+def funcb
+a=10
+b="xxxx"
+end def
